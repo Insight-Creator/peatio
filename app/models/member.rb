@@ -131,6 +131,7 @@ class Member < ApplicationRecord
   class << self
     def uid(member_id)
       Member.find_by(id: member_id)&.uid
+<<<<<<< HEAD
     end
 
     def find_by_username_or_uid(uid_or_username)
@@ -139,6 +140,8 @@ class Member < ApplicationRecord
       elsif Member.find_by(username: uid_or_username).present?
         Member.find_by(username: uid_or_username)
       end
+=======
+>>>>>>> 2d0a0bc0 (Update order:archive job. Add documentation (#2764))
     end
 
     # Create Member object from payload

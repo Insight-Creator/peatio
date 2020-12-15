@@ -34,6 +34,7 @@ namespace :job do
           end
         end
         { pointer: time, counter: count }
+<<<<<<< HEAD
       end
     end
 
@@ -49,6 +50,8 @@ namespace :job do
           exist = false if batch.zero?
         end
         { pointer: time, counter: count }
+=======
+>>>>>>> 2d0a0bc0 (Update order:archive job. Add documentation (#2764))
       end
     end
 
