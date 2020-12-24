@@ -17,7 +17,9 @@ class WalletService
                        currency: withdrawal.currency.to_blockchain_api_settings)
     transaction = Peatio::Transaction.new(to_address: withdrawal.rid,
                                           amount:     withdrawal.amount)
-    @adapter.create_transaction!(transaction)
+    transaction = @adapter.create_transaction!(transaction)
+    save_transaction(transaction.as_json.merge(from_address: @wallet.address), withdrawal) if transaction.present?
+    transaction
   end
 
   def spread_deposit(deposit)
@@ -68,7 +70,14 @@ class WalletService
                      .compact
     )
 
-    deposit_spread.map { |t| @adapter.create_transaction!(t, subtract_fee: true) }
+    deposit_spread.map do |transaction|
+      # In #spread_deposit valid transactions saved with pending state
+      if transaction.status.pending?
+        transaction = @adapter.create_transaction!(transaction, subtract_fee: true)
+        save_transaction(transaction.as_json.merge(from_address: deposit.address), deposit) if transaction.present?
+      end
+      transaction
+    end
   end
 
   # TODO: We don't need deposit_spread anymore.
@@ -79,14 +88,17 @@ class WalletService
                                                   txout:        deposit.txout,
                                                   to_address:   deposit.address,
                                                   block_number: deposit.block_number,
-                                                  amount:       deposit.amount,
-                                                  currency_id:  deposit.currency_id)
+                                                  amount:       deposit.amount)
 
     transactions = @adapter.prepare_deposit_collection!(deposit_transaction,
-                                         deposit_spread,
-                                         deposit.currency.to_blockchain_api_settings)
+                                                        # In #spread_deposit valid transactions saved with pending state
+                                                        deposit_spread.select { |t| t.status.pending? },
+                                                        deposit.currency.to_blockchain_api_settings)
 
-    deposit.update(spread: deposit.spread.map { |s| s.merge(options: transactions.first.options) }) if transactions.present?
+    if transactions.present?
+      deposit.update(spread: deposit.spread.map { |s| s.merge(options: transactions.first.options) })
+      transactions.each { |t| save_transaction(t.as_json.merge(from_address: @wallet.address), deposit) }
+    end
     transactions
   end
 
@@ -159,6 +171,8 @@ class WalletService
       transaction = Peatio::Transaction.new(to_address:  dw[:address],
                                             amount:      amount_for_wallet.to_d,
                                             currency_id: deposit.currency_id)
+
+      # Tx will not be collected to this destination wallet
       transaction.status = :skipped if dw[:skip_deposit_collection]
       transaction
     rescue => e
@@ -178,7 +192,12 @@ class WalletService
       unless sp.map(&:amount).sum == original_amount
         raise Error, "Deposit spread failed deposit.amount != collection_spread.values.sum"
       end
-      sp.delete_if { |tr| tr.status == 'skipped' }
     end
+  end
+
+  # Record blockchain transactions in DB
+  def save_transaction(transaction, reference)
+    transaction['txid'] = transaction.delete('hash')
+    Transaction.create!(transaction.merge(reference: reference))
   end
 end

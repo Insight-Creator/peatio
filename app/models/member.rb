@@ -47,6 +47,13 @@ class Member < ApplicationRecord
     elsif model_or_id_or_code.is_a?(Currency)
       accounts.find_or_create_by(currency: model_or_id_or_code)
     end
+  # Thread Safe Account creation
+  rescue ActiveRecord::RecordNotUnique
+    if model_or_id_or_code.is_a?(String) || model_or_id_or_code.is_a?(Symbol)
+      accounts.find_by(currency_id: model_or_id_or_code)
+    elsif model_or_id_or_code.is_a?(Currency)
+      accounts.find_by(currency: model_or_id_or_code)
+    end
   end
 
   # @deprecated
@@ -196,7 +203,7 @@ class Member < ApplicationRecord
 end
 
 # == Schema Information
-# Schema version: 20190829035814
+# Schema version: 20201207134745
 #
 # Table name: members
 #
@@ -213,4 +220,5 @@ end
 # Indexes
 #
 #  index_members_on_email  (email) UNIQUE
+#  index_members_on_uid    (uid) UNIQUE
 #

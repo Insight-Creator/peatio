@@ -107,9 +107,6 @@ trigger:
   event:
     - push
 
-image_pull_secrets:
-  - dockerconfigjson
-
 ---
 kind: pipeline
 type: docker
@@ -359,7 +356,11 @@ name: docker-build-snapshot
 
 steps:
 - name: git-tag-snapshot
+<<<<<<< HEAD
   image: quay.io/openware/sdk-citools:2.4.5
+=======
+  image: quay.io/openware/sdk-citools:2.6.7
+>>>>>>> 7f4e58b5afd4093aec74533deb3043e0cb0521f0
   environment:
     BRANCH_NAME: master
     REPO_NAME: ${DRONE_REPO}
@@ -397,7 +398,11 @@ steps:
 
 # Update changelog and API documentation, then push it to sdk repository and notify.
 - name: push-and-notify
+<<<<<<< HEAD
   image: quay.io/openware/sdk-citools:2.4.5
+=======
+  image: quay.io/openware/sdk-citools:2.6.7
+>>>>>>> 7f4e58b5afd4093aec74533deb3043e0cb0521f0
   environment:
     BOT_USERNAME: kite-bot
     BOT_NAME: Kite Bot
@@ -417,7 +422,10 @@ steps:
       from_secret: kite_bot_key
   commands:
     - BUNDLE_GEMFILE=/sdk/Gemfile bundle exec rake --rakefile=/sdk/Rakefile ci:postbuild[/drone/src]
+<<<<<<< HEAD
   detach: true
+=======
+>>>>>>> 7f4e58b5afd4093aec74533deb3043e0cb0521f0
   when:
     branch:
       - master
@@ -457,6 +465,8 @@ steps:
 # Update application version
 - name: git-tag-stable
   image: quay.io/openware/sdk-citools:2.4.5
+  image: quay.io/openware/sdk-citools:2.6.7
+
   environment:
     BOT_USERNAME: kite-bot
     BOT_NAME: Kite Bot
@@ -494,7 +504,11 @@ steps:
 
 # Update changelog and API documentation, then push it to sdk repository and notify.
 - name: push-and-notify
+<<<<<<< HEAD
   image: quay.io/openware/sdk-citools:2.4.5
+=======
+  image: quay.io/openware/sdk-citools:2.6.7
+>>>>>>> 7f4e58b5afd4093aec74533deb3043e0cb0521f0
   environment:
     BOT_USERNAME: kite-bot
     BOT_NAME: Kite Bot
@@ -514,7 +528,10 @@ steps:
       from_secret: kite_bot_key
   commands:
     - BUNDLE_GEMFILE=/sdk/Gemfile bundle exec rake --rakefile=/sdk/Rakefile ci:postbuild[/drone/src]
+<<<<<<< HEAD
   detach: true
+=======
+>>>>>>> 7f4e58b5afd4093aec74533deb3043e0cb0521f0
 
 # Trigger custom Peatio image build
 - name: build-custom-image
@@ -542,3 +559,9 @@ depends_on:
 - test-mariadb-10.3
 - test-mysql-8.0
 - test-postgresql-13.0
+<<<<<<< HEAD
+=======
+
+image_pull_secrets:
+  - dockerconfigjson
+>>>>>>> 7f4e58b5afd4093aec74533deb3043e0cb0521f0
