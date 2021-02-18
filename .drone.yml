@@ -456,6 +456,9 @@ trigger:
     - "fix/*"
     - "integration/*"
 
+image_pull_secrets:
+  - dockerconfigjson
+
 ---
 kind: pipeline
 type: docker
