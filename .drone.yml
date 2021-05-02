@@ -357,10 +357,17 @@ name: docker-build-snapshot
 steps:
 - name: git-tag-snapshot
 <<<<<<< HEAD
+<<<<<<< HEAD
   image: quay.io/openware/sdk-citools:2.4.5
 =======
   image: quay.io/openware/sdk-citools:2.6.7
 >>>>>>> 7f4e58b5afd4093aec74533deb3043e0cb0521f0
+=======
+  image: quay.io/openware/sdk-citools:2.6.7
+=======
+  image: quay.io/openware/sdk-citools:2.4.5
+>>>>>>> 777ed623 (Update drone config (#2759))
+>>>>>>> f66478dd (Update drone config (#2759))
   environment:
     BRANCH_NAME: master
     REPO_NAME: ${DRONE_REPO}
@@ -399,10 +406,17 @@ steps:
 # Update changelog and API documentation, then push it to sdk repository and notify.
 - name: push-and-notify
 <<<<<<< HEAD
+<<<<<<< HEAD
   image: quay.io/openware/sdk-citools:2.4.5
 =======
   image: quay.io/openware/sdk-citools:2.6.7
 >>>>>>> 7f4e58b5afd4093aec74533deb3043e0cb0521f0
+=======
+  image: quay.io/openware/sdk-citools:2.6.7
+=======
+  image: quay.io/openware/sdk-citools:2.4.5
+>>>>>>> 777ed623 (Update drone config (#2759))
+>>>>>>> f66478dd (Update drone config (#2759))
   environment:
     BOT_USERNAME: kite-bot
     BOT_NAME: Kite Bot
@@ -423,9 +437,15 @@ steps:
   commands:
     - BUNDLE_GEMFILE=/sdk/Gemfile bundle exec rake --rakefile=/sdk/Rakefile ci:postbuild[/drone/src]
 <<<<<<< HEAD
+<<<<<<< HEAD
   detach: true
 =======
 >>>>>>> 7f4e58b5afd4093aec74533deb3043e0cb0521f0
+=======
+=======
+  detach: true
+>>>>>>> 777ed623 (Update drone config (#2759))
+>>>>>>> f66478dd (Update drone config (#2759))
   when:
     branch:
       - master
@@ -456,9 +476,12 @@ trigger:
     - "fix/*"
     - "integration/*"
 
+<<<<<<< HEAD
 image_pull_secrets:
   - dockerconfigjson
 
+=======
+>>>>>>> 777ed623 (Update drone config (#2759))
 ---
 kind: pipeline
 type: docker
@@ -467,9 +490,17 @@ name: docker-build-stable
 steps:
 # Update application version
 - name: git-tag-stable
+<<<<<<< HEAD
   image: quay.io/openware/sdk-citools:2.4.5
   image: quay.io/openware/sdk-citools:2.6.7
 
+=======
+<<<<<<< HEAD
+  image: quay.io/openware/sdk-citools:2.6.7
+=======
+  image: quay.io/openware/sdk-citools:2.4.5
+>>>>>>> 777ed623 (Update drone config (#2759))
+>>>>>>> f66478dd (Update drone config (#2759))
   environment:
     BOT_USERNAME: kite-bot
     BOT_NAME: Kite Bot
@@ -508,10 +539,17 @@ steps:
 # Update changelog and API documentation, then push it to sdk repository and notify.
 - name: push-and-notify
 <<<<<<< HEAD
+<<<<<<< HEAD
   image: quay.io/openware/sdk-citools:2.4.5
 =======
   image: quay.io/openware/sdk-citools:2.6.7
 >>>>>>> 7f4e58b5afd4093aec74533deb3043e0cb0521f0
+=======
+  image: quay.io/openware/sdk-citools:2.6.7
+=======
+  image: quay.io/openware/sdk-citools:2.4.5
+>>>>>>> 777ed623 (Update drone config (#2759))
+>>>>>>> f66478dd (Update drone config (#2759))
   environment:
     BOT_USERNAME: kite-bot
     BOT_NAME: Kite Bot
@@ -532,9 +570,15 @@ steps:
   commands:
     - BUNDLE_GEMFILE=/sdk/Gemfile bundle exec rake --rakefile=/sdk/Rakefile ci:postbuild[/drone/src]
 <<<<<<< HEAD
+<<<<<<< HEAD
   detach: true
 =======
 >>>>>>> 7f4e58b5afd4093aec74533deb3043e0cb0521f0
+=======
+=======
+  detach: true
+>>>>>>> 777ed623 (Update drone config (#2759))
+>>>>>>> f66478dd (Update drone config (#2759))
 
 # Trigger custom Peatio image build
 - name: build-custom-image
@@ -551,6 +595,7 @@ steps:
     - "curl -s -XPOST -H \"Authorization: Bearer $DRONE_TOKEN\" -i \"$SERVER/api/repos/$REPO/builds?branch=$BRANCH&ASSEMBLY_COMPONENT_VERSION=$COMPONENT_VERSION&ASSEMBLY_COMPONENT=$COMPONENT\""
   detach: true
 
+<<<<<<< HEAD
 - name: "Update global OpenDAX version"
   image: quay.io/openware/goci:0.0.11
   environment:
@@ -559,6 +604,8 @@ steps:
   commands:
     - /app/goci versions
 
+=======
+>>>>>>> 777ed623 (Update drone config (#2759))
 trigger:
   event:
     - push
@@ -571,8 +618,16 @@ depends_on:
 - test-mysql-8.0
 - test-postgresql-13.0
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 image_pull_secrets:
   - dockerconfigjson
 >>>>>>> 7f4e58b5afd4093aec74533deb3043e0cb0521f0
+=======
+
+image_pull_secrets:
+  - dockerconfigjson
+=======
+>>>>>>> 777ed623 (Update drone config (#2759))
+>>>>>>> f66478dd (Update drone config (#2759))
