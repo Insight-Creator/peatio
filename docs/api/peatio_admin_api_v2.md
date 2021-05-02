@@ -1,11 +1,19 @@
 # Peatio Admin API v2
 Admin API high privileged API with RBAC.
 
+<<<<<<< HEAD
 ## Version: 3.1.0
 
 **Contact information:**  
 openware.com  
 <https://www.openware.com>  
+=======
+## Version: 2.7.0
+
+**Contact information:**  
+openware.com  
+<https://www.openware.com>
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 hello@openware.com  
 
 **License:** <https://github.com/openware/peatio/blob/master/LICENSE.md>
@@ -59,6 +67,7 @@ Update blockchain.
 | 201 | Update blockchain. | [Blockchain](#blockchain) |
 
 ### /api/v2/admin/peatio/blockchains/new
+<<<<<<< HEAD
 
 #### POST
 ##### Description
@@ -85,6 +94,34 @@ Create new blockchain.
 | ---- | ----------- | ------ |
 | 201 | Create new blockchain. | [Blockchain](#blockchain) |
 
+=======
+
+#### POST
+##### Description
+
+Create new blockchain.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| key | formData | Unique key to identify blockchain. | Yes | string |
+| name | formData | A name to identify blockchain. | Yes | string |
+| client | formData | Integrated blockchain client. | Yes | string |
+| height | formData | The number of blocks preceding a particular block on blockchain. | Yes | integer |
+| explorer_transaction | formData | Blockchain explorer transaction template. | No | string |
+| explorer_address | formData | Blockchain explorer address template. | No | string |
+| server | formData | Blockchain server url | No | string |
+| status | formData | Blockchain status (active/disabled). | No | string |
+| min_confirmations | formData | Minimum number of confirmations. | No | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 | Create new blockchain. | [Blockchain](#blockchain) |
+
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 ### /api/v2/admin/peatio/blockchains/{id}/latest_block
 
 #### GET
@@ -325,7 +362,11 @@ Cancel all orders.
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
+<<<<<<< HEAD
 | market | formData | Id has been renamed to symbol. This field will be deprecated soon. | Yes | string |
+=======
+| market | formData | Unique order id. | Yes | string |
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 | side | formData | If present, only sell orders (asks) or buy orders (bids) will be cancelled. | No | string |
 
 ##### Responses
@@ -364,8 +405,12 @@ Get all orders, result is paginated.
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
+<<<<<<< HEAD
 | market | query | Id has been renamed to symbol. This field will be deprecated soon. | No | string |
 | market_type | query | Market type. | No | string |
+=======
+| market | query | Unique market id. It's always in the form of xxxyyy,where xxx is the base currency code, yyy is the quotecurrency code, e.g. 'btcusd'. All available markets canbe found at /api/v2/markets. | No | string |
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 | state | query | Filter order by state. | No | string |
 | ord_type | query | Filter order by ord_type. | No | string |
 | price | query | Price for each unit. e.g.If you want to sell/buy 1 btc at 3000 usd, the price is '3000.0' | No | double |
@@ -529,9 +574,13 @@ Update market.
 | max_price | formData | Maximum order price. | No | double |
 | data | formData | Market additional data. | No | json |
 | state | formData | Market state defines if user can see/trade on current market. | No | string |
+<<<<<<< HEAD
 | id | formData | Id has been renamed to symbol. This field will be deprecated soon. | No | string |
 | symbol | formData | Unique market ticker symbol. It's always in the form of xxxyyy,where xxx is the base currency code, yyy is the quotecurrency code, e.g. 'btcusd'. All available markets canbe found at /api/v2/markets. | No | string |
 | type | formData |  | No | string |
+=======
+| id | formData | Unique market id. It's always in the form of xxxyyy,where xxx is the base currency code, yyy is the quotecurrency code, e.g. 'btcusd'. All available markets canbe found at /api/v2/markets. | Yes | string |
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 | engine_id | formData | Engine id for this market. | No | integer |
 | position | formData | Market position. | No | integer |
 | min_price | formData | Minimum order price. | No | double |
@@ -563,7 +612,10 @@ Create new market.
 | quote_currency | formData | Market Quote unit. | Yes | string |
 | min_price | formData | Minimum order price. | Yes | double |
 | min_amount | formData | Minimum order amount. | Yes | double |
+<<<<<<< HEAD
 | type | formData |  | No | string |
+=======
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 | engine_id | formData | Engine id for this market. | No | integer |
 | position | formData | Market position. | No | integer |
 | engine_name | formData | Engine name | No | string |
@@ -574,7 +626,11 @@ Create new market.
 | ---- | ----------- | ------ |
 | 201 | Create new market. | [Market](#market) |
 
+<<<<<<< HEAD
 ### /api/v2/admin/peatio/markets/{symbol}
+=======
+### /api/v2/admin/peatio/markets/{id}
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 
 #### GET
 ##### Description
@@ -618,6 +674,10 @@ Get all markets, result is paginated.
 | 200 | Get all markets, result is paginated. | [ [Market](#market) ] |
 
 ### /api/v2/admin/peatio/wallets/currencies
+<<<<<<< HEAD
+
+#### DELETE
+=======
 
 #### DELETE
 ##### Description
@@ -655,6 +715,82 @@ Add currency to the wallet
 | ---- | ----------- | ------ |
 | 201 | Add currency to the wallet | [Wallet](#wallet) |
 
+### /api/v2/admin/peatio/wallets/update
+
+#### POST
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+##### Description
+
+Delete currency from the wallet
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+<<<<<<< HEAD
+| id | query | Unique wallet identifier in database. | Yes | integer |
+| currencies | query | Wallet currency code. | Yes | string |
+=======
+| max_balance | formData | Wallet max balance. | No | double |
+| status | formData | Wallet status (active/disabled). | No | string |
+| id | formData | Unique wallet identifier in database. | Yes | integer |
+| blockchain_key | formData | Wallet blockchain key. | No | string |
+| name | formData | Wallet name. | No | string |
+| address | formData | Wallet address. | No | string |
+| kind | formData | Kind of wallet 'deposit','fee','hot','warm' or 'cold'. | No | string |
+| gateway | formData | Wallet gateway. | No | string |
+| currencies | formData | Wallet currency code. | No | string |
+| settings | formData | Wallet settings | No | json |
+| settings[uri] | formData | Wallet uri setting | No | string |
+| settings[secret] | formData | Wallet secret setting | No | string |
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+<<<<<<< HEAD
+| 200 | Delete currency from the wallet | [Wallet](#wallet) |
+=======
+| 201 | Update wallet. | [Wallet](#wallet) |
+
+### /api/v2/admin/peatio/wallets/new
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+
+#### POST
+##### Description
+
+Add currency to the wallet
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+<<<<<<< HEAD
+| id | formData | Unique wallet identifier in database. | Yes | integer |
+| currencies | formData | Wallet currency code. | Yes | string |
+=======
+| max_balance | formData | Wallet max balance. | No | double |
+| status | formData | Wallet status (active/disabled). | No | string |
+| blockchain_key | formData | Wallet blockchain key. | Yes | string |
+| name | formData | Wallet name. | Yes | string |
+| address | formData | Wallet address. | No | string |
+| currencies | formData | Wallet currency code. | No | string |
+| currency | formData | Wallet currency code. | No | string |
+| kind | formData | Kind of wallet 'deposit','fee','hot','warm' or 'cold'. | Yes | string |
+| gateway | formData | Wallet gateway. | Yes | string |
+| settings | formData | Wallet settings (uri, secret) | No | json |
+| settings[uri] | formData | Wallet uri setting | No | string |
+| settings[secret] | formData | Wallet secret setting | No | string |
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 | Add currency to the wallet | [Wallet](#wallet) |
+
+<<<<<<< HEAD
 ### /api/v2/admin/peatio/wallets/update
 
 #### POST
@@ -717,6 +853,10 @@ Creates new wallet.
 
 ### /api/v2/admin/peatio/wallets/{id}
 
+=======
+### /api/v2/admin/peatio/wallets/{id}
+
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 #### GET
 ##### Description
 
@@ -805,10 +945,37 @@ Creates new crypto refund
 | ---- | ----------- | ------ |
 | 201 | Creates new crypto refund | [Refund](#refund) |
 
+<<<<<<< HEAD
+### /api/v2/admin/peatio/deposits/{id}/refund
+
+#### POST
+##### Description
+
+Creates new crypto refund
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | path | Deposit id | Yes | integer |
+| address | formData | Refund address | Yes | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 | Creates new crypto refund | [Refund](#refund) |
+
 ### /api/v2/admin/peatio/deposits/new
 
 #### POST
 ##### Description
+=======
+### /api/v2/admin/peatio/deposits/new
+
+#### POST
+##### Description
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 
 Creates new fiat deposit .
 
@@ -883,6 +1050,7 @@ Get all deposits, result is paginated.
 | 200 | Get all deposits, result is paginated. | [ [Deposit](#deposit) ] |
 
 ### /api/v2/admin/peatio/deposit_address
+<<<<<<< HEAD
 
 #### POST
 ##### Description
@@ -957,43 +1125,59 @@ Get all withdraws, result is paginated.
 | 200 | Get all withdraws, result is paginated. | [ [Withdraw](#withdraw) ] |
 
 ### /api/v2/admin/peatio/withdraws/actions
+=======
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 
 #### POST
 ##### Description
 
-Take an action on the withdrawal.
+Returns deposit address for account you want to deposit to by currency and uid.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+<<<<<<< HEAD
+| id | formData | The withdrawal id. | Yes | integer |
+| action | formData | Valid actions are [:accept, :cancel, :reject, :process, :load, :dispatch, :success, :skip, :fail, :err]. | Yes | string |
+| txid | formData | The withdrawal transaction id. | No | string |
+=======
+| uid | formData | Deposit member uid. | Yes | string |
+| currency | formData | Deposit currency id. | Yes | string |
+| address_format | formData | Address format legacy/cash | No | string |
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 | Returns deposit address for account you want to deposit to by currency and uid. | [Deposit](#deposit) |
+
+<<<<<<< HEAD
+### /api/v2/admin/peatio/withdraws/{id}
+
+#### GET
+=======
+### /api/v2/admin/peatio/withdraws
+
+#### PUT
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+##### Description
+
+Update withdraw request
 
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | id | formData | The withdrawal id. | Yes | integer |
-| action | formData | Valid actions are [:accept, :cancel, :reject, :process, :load, :dispatch, :success, :skip, :fail, :err]. | Yes | string |
-| txid | formData | The withdrawal transaction id. | No | string |
+| metadata | formData | Optional metadata to be applied to the transaction. | No | json |
 
 ##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 201 | Take an action on the withdrawal. | [Withdraw](#withdraw) |
-
-### /api/v2/admin/peatio/withdraws/{id}
-
-#### GET
-##### Description
-
-Get withdraw by ID.
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| id | path | The withdrawal id. | Yes | integer |
-
-##### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
+<<<<<<< HEAD
 | 200 | Get withdraw by ID. | [Withdraw](#withdraw) |
 
 ### /api/v2/admin/peatio/trades/{id}
@@ -1308,6 +1492,9 @@ It creates trading fees record
 | 201 | It creates trading fees record | [TradingFee](#tradingfee) |
 
 ### /api/v2/admin/peatio/trading_fees
+=======
+| 200 | Update withdraw request | [Withdraw](#withdraw) |
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 
 #### GET
 ##### Description
@@ -1318,9 +1505,25 @@ Returns trading_fees table as paginated collection
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
+<<<<<<< HEAD
 | group | query | Member group for define maker/taker fee. | No | string |
 | market_id | query | Market id for define maker/taker fee. | No | string |
 | market_type | query |  | No | string |
+=======
+| state | query | The withdrawal state. | No | string |
+| id | query | The withdrawal id. | No | integer |
+| txid | query | The withdrawal transaction id. | No | string |
+| tid | query | Withdraw tid. | No | string |
+| confirmations | query | Number of confirmations. | No | integer |
+| rid | query | The beneficiary ID or wallet address on the Blockchain. | No | string |
+| wallet_type | query | Select withdraw that can be processed from wallets with given type e.g. patiry | No | string |
+| uid | query | Member UID. | No | string |
+| currency | query | Deposit currency id. | No | string |
+| type | query | Currency type | No | string |
+| range | query | Date range picker, defaults to 'created'. | No | string |
+| from | query | An integer represents the seconds elapsed since Unix epoch.If set, only entities FROM the time will be retrieved. | No | dateTime |
+| to | query | An integer represents the seconds elapsed since Unix epoch.If set, only entities BEFORE the time will be retrieved. | No | dateTime |
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 | limit | query | Limit the number of returned paginations. Defaults to 100. | No | integer |
 | page | query | Specify the page of paginated results. | No | integer |
 | ordering | query | If set, returned values will be sorted in specific order, defaults to 'asc'. | No | string |
@@ -1331,6 +1534,438 @@ Returns trading_fees table as paginated collection
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | Returns trading_fees table as paginated collection | [ [TradingFee](#tradingfee) ] |
+
+<<<<<<< HEAD
+### /api/v2/admin/peatio/engines/update
+
+#### POST
+=======
+### /api/v2/admin/peatio/withdraws/actions
+
+#### POST
+##### Description
+
+Take an action on the withdrawal.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | formData | The withdrawal id. | Yes | integer |
+| action | formData | Valid actions are [:accept, :cancel, :reject, :process, :load, :dispatch, :success, :skip, :fail, :err]. | Yes | string |
+| txid | formData | The withdrawal transaction id. | No | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 | Take an action on the withdrawal. | [Withdraw](#withdraw) |
+
+### /api/v2/admin/peatio/withdraws/{id}
+
+#### GET
+##### Description
+
+Get withdraw by ID.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | path | The withdrawal id. | Yes | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Get withdraw by ID. | [Withdraw](#withdraw) |
+
+### /api/v2/admin/peatio/trades/{id}
+
+#### GET
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+##### Description
+
+Update engine
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | formData | Engine uniq id | Yes | string |
+| name | formData | Engine name | No | string |
+| driver | formData | Engine driver | No | string |
+| key | formData | Credentials for remote engine | No | string |
+| secret | formData | Credentials for remote engine | No | string |
+| state | formData | Engine state | No | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 | Update engine | [Engine](#engine) |
+
+<<<<<<< HEAD
+### /api/v2/admin/peatio/engines/new
+
+#### POST
+=======
+### /api/v2/admin/peatio/trades
+
+#### GET
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+##### Description
+
+Create new engine.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | formData | Engine name | Yes | string |
+| driver | formData | Engine driver | Yes | string |
+| uid | formData | Owner of a engine | No | string |
+| key | formData | Credentials for remote engine | No | string |
+| secret | formData | Credentials for remote engine | No | string |
+| data | formData | Metadata for engine | No | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 | Create new engine. | [Engine](#engine) |
+
+<<<<<<< HEAD
+### /api/v2/admin/peatio/engines/{id}
+=======
+### /api/v2/admin/peatio/assets
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+
+#### GET
+##### Description
+
+Get engine.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | path | Engine uniq id | Yes | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Get engine. | [Engine](#engine) |
+
+<<<<<<< HEAD
+### /api/v2/admin/peatio/engines
+=======
+### /api/v2/admin/peatio/expenses
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+
+#### GET
+##### Description
+
+Get all engine, result is paginated.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| limit | query | Limit the number of returned paginations. Defaults to 100. | No | integer |
+| page | query | Specify the page of paginated results. | No | integer |
+| ordering | query | If set, returned values will be sorted in specific order, defaults to 'asc'. | No | string |
+| order_by | query | Name of the field, which result will be ordered by. | No | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Get all engine, result is paginated. | [ [Engine](#engine) ] |
+
+<<<<<<< HEAD
+### /api/v2/admin/peatio/withdraw_limits/{id}
+
+#### DELETE
+=======
+### /api/v2/admin/peatio/revenues
+
+#### GET
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+##### Description
+
+It deletes withdraw limits record
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | path | Unique withdraw limit table identifier in database. | Yes | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | It deletes withdraw limits record | [WithdrawLimit](#withdrawlimit) |
+
+<<<<<<< HEAD
+### /api/v2/admin/peatio/withdraw_limits
+
+#### PUT
+=======
+### /api/v2/admin/peatio/liabilities
+
+#### GET
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+##### Description
+
+It updates withdraw limits record
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | formData | Unique withdraw limit table identifier in database. | Yes | integer |
+| limit_24_hour | formData | 24 hours withdraw limit. | No | double |
+| limit_1_month | formData | 1 month withdraw limit. | No | double |
+| kyc_level | formData | KYC level for define withdraw limits. | No | string |
+| group | formData | Member group for define withdraw limits. | No | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | It updates withdraw limits record | [WithdrawLimit](#withdrawlimit) |
+
+<<<<<<< HEAD
+#### POST
+=======
+### /api/v2/admin/peatio/members/{uid}
+
+#### PUT
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+##### Description
+
+It creates withdraw limits record
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| limit_24_hour | formData | 24 hours withdraw limit. | Yes | double |
+| limit_1_month | formData | 1 month withdraw limit. | Yes | double |
+| group | formData | Member group for define withdraw limits. | No | string |
+| kyc_level | formData | KYC level for define withdraw limits. | No | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 | It creates withdraw limits record | [WithdrawLimit](#withdrawlimit) |
+
+#### GET
+##### Description
+
+Returns withdraw limits table as paginated collection
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| group | query | Member group for define withdraw limits. | No | string |
+| kyc_level | query | KYC level for define withdraw limits. | No | string |
+| limit | query | Limit the number of returned paginations. Defaults to 100. | No | integer |
+| page | query | Specify the page of paginated results. | No | integer |
+| ordering | query | If set, returned values will be sorted in specific order, defaults to 'asc'. | No | string |
+| order_by | query | Name of the field, which result will be ordered by. | No | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Returns withdraw limits table as paginated collection | [ [WithdrawLimit](#withdrawlimit) ] |
+
+<<<<<<< HEAD
+### /api/v2/admin/peatio/airdrops
+
+#### POST
+=======
+### /api/v2/admin/peatio/members/groups
+
+#### GET
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+##### Description
+
+Process user airdrop
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| file | formData |  | Yes | file |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 201 | Process user airdrop |
+
+<<<<<<< HEAD
+### /api/v2/admin/peatio/internal_transfers
+=======
+### /api/v2/admin/peatio/members
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+
+#### GET
+##### Description
+
+Get all internal transfers.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| sender | query | Sender uid or username. | No | string |
+| receiver | query | Receiver uid or username. | No | string |
+| currency | query | Deposit currency id. | No | string |
+| limit | query | Limit the number of returned paginations. Defaults to 100. | No | integer |
+| page | query | Specify the page of paginated results. | No | integer |
+| range | query | Date range picker, defaults to 'created'. | No | string |
+| from | query | An integer represents the seconds elapsed since Unix epoch.If set, only entities FROM the time will be retrieved. | No | dateTime |
+| to | query | An integer represents the seconds elapsed since Unix epoch.If set, only entities BEFORE the time will be retrieved. | No | dateTime |
+| ordering | query | If set, returned values will be sorted in specific order, defaults to 'asc'. | No | string |
+| order_by | query | Name of the field, which result will be ordered by. | No | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Get all internal transfers. | [ [InternalTransfer](#internaltransfer) ] |
+
+<<<<<<< HEAD
+### /api/v2/admin/peatio/whitelisted_smart_contracts/csv
+=======
+### /api/v2/admin/peatio/trading_fees/delete
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+
+#### POST
+##### Description
+
+Process whitelisted smart contracts from csv
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| file | formData | CSV file with whitelisted smart contracts data | Yes | file |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 | Process whitelisted smart contracts from csv | [WhitelistedSmartContract](#whitelistedsmartcontract) |
+
+<<<<<<< HEAD
+### /api/v2/admin/peatio/whitelisted_smart_contracts
+
+#### PUT
+=======
+### /api/v2/admin/peatio/trading_fees/update
+
+#### POST
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+##### Description
+
+Update whitelisted_smart_contract.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | formData | Unique whitelisted smart contract identifier in database. | Yes | integer |
+| blockchain_key | formData | Whitelisted smart contract blockchain key. | No | string |
+| description | formData | Whitelisted smart contract description. | No | string |
+| address | formData | Whitelisted smart contract address. | No | string |
+| state | formData | Whitelisted smart contract status (active/disabled). | No | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+<<<<<<< HEAD
+| 200 | Update whitelisted_smart_contract. | [WhitelistedSmartContract](#whitelistedsmartcontract) |
+=======
+| 201 | It updates trading fees record | [TradingFee](#tradingfee) |
+
+### /api/v2/admin/peatio/trading_fees/new
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+
+#### POST
+##### Description
+
+Creates new whitelisted address.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| blockchain_key | formData | Whitelisted smart contract blockchain key. | Yes | string |
+| address | formData | Whitelisted smart contract address. | Yes | string |
+| description | formData | Whitelisted smart contract description. | No | string |
+| state | formData | Whitelisted smart contract status (active/disabled). | No | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+<<<<<<< HEAD
+| 201 | Creates new whitelisted address. | [WhitelistedSmartContract](#whitelistedsmartcontract) |
+=======
+| 201 | It creates trading fees record | [TradingFee](#tradingfee) |
+
+### /api/v2/admin/peatio/trading_fees
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
+
+#### GET
+##### Description
+
+Get all whitelisted addresses, result is paginated.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| blockchain_key | query | Whitelisted smart contract blockchain key. | No | string |
+| limit | query | Limit the number of returned paginations. Defaults to 100. | No | integer |
+| page | query | Specify the page of paginated results. | No | integer |
+| ordering | query | If set, returned values will be sorted in specific order, defaults to 'asc'. | No | string |
+| order_by | query | Name of the field, which result will be ordered by. | No | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Get all whitelisted addresses, result is paginated. | [ [WhitelistedSmartContract](#whitelistedsmartcontract) ] |
+
+### /api/v2/admin/peatio/whitelisted_smart_contract/{id}
+
+#### GET
+##### Description
+
+Get a whitelisted address.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | path | Unique whitelisted smart contract identifier in database. | Yes | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Get a whitelisted address. | [WhitelistedSmartContract](#whitelistedsmartcontract) |
 
 ### /api/v2/admin/peatio/engines/update
 
@@ -1505,155 +2140,6 @@ Returns withdraw limits table as paginated collection
 | ---- | ----------- | ------ |
 | 200 | Returns withdraw limits table as paginated collection | [ [WithdrawLimit](#withdrawlimit) ] |
 
-### /api/v2/admin/peatio/airdrops
-
-#### POST
-##### Description
-
-Process user airdrop
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| file | formData |  | Yes | file |
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 201 | Process user airdrop |
-
-### /api/v2/admin/peatio/internal_transfers
-
-#### GET
-##### Description
-
-Get all internal transfers.
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| sender | query | Sender uid or username. | No | string |
-| receiver | query | Receiver uid or username. | No | string |
-| currency | query | Deposit currency id. | No | string |
-| limit | query | Limit the number of returned paginations. Defaults to 100. | No | integer |
-| page | query | Specify the page of paginated results. | No | integer |
-| range | query | Date range picker, defaults to 'created'. | No | string |
-| from | query | An integer represents the seconds elapsed since Unix epoch.If set, only entities FROM the time will be retrieved. | No | dateTime |
-| to | query | An integer represents the seconds elapsed since Unix epoch.If set, only entities BEFORE the time will be retrieved. | No | dateTime |
-| ordering | query | If set, returned values will be sorted in specific order, defaults to 'asc'. | No | string |
-| order_by | query | Name of the field, which result will be ordered by. | No | string |
-
-##### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Get all internal transfers. | [ [InternalTransfer](#internaltransfer) ] |
-
-### /api/v2/admin/peatio/whitelisted_smart_contracts/csv
-
-#### POST
-##### Description
-
-Process whitelisted smart contracts from csv
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| file | formData | CSV file with whitelisted smart contracts data | Yes | file |
-
-##### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 201 | Process whitelisted smart contracts from csv | [WhitelistedSmartContract](#whitelistedsmartcontract) |
-
-### /api/v2/admin/peatio/whitelisted_smart_contracts
-
-#### PUT
-##### Description
-
-Update whitelisted_smart_contract.
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| id | formData | Unique whitelisted smart contract identifier in database. | Yes | integer |
-| blockchain_key | formData | Whitelisted smart contract blockchain key. | No | string |
-| description | formData | Whitelisted smart contract description. | No | string |
-| address | formData | Whitelisted smart contract address. | No | string |
-| state | formData | Whitelisted smart contract status (active/disabled). | No | string |
-
-##### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Update whitelisted_smart_contract. | [WhitelistedSmartContract](#whitelistedsmartcontract) |
-
-#### POST
-##### Description
-
-Creates new whitelisted address.
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| blockchain_key | formData | Whitelisted smart contract blockchain key. | Yes | string |
-| address | formData | Whitelisted smart contract address. | Yes | string |
-| description | formData | Whitelisted smart contract description. | No | string |
-| state | formData | Whitelisted smart contract status (active/disabled). | No | string |
-
-##### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 201 | Creates new whitelisted address. | [WhitelistedSmartContract](#whitelistedsmartcontract) |
-
-#### GET
-##### Description
-
-Get all whitelisted addresses, result is paginated.
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| blockchain_key | query | Whitelisted smart contract blockchain key. | No | string |
-| limit | query | Limit the number of returned paginations. Defaults to 100. | No | integer |
-| page | query | Specify the page of paginated results. | No | integer |
-| ordering | query | If set, returned values will be sorted in specific order, defaults to 'asc'. | No | string |
-| order_by | query | Name of the field, which result will be ordered by. | No | string |
-
-##### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Get all whitelisted addresses, result is paginated. | [ [WhitelistedSmartContract](#whitelistedsmartcontract) ] |
-
-### /api/v2/admin/peatio/whitelisted_smart_contract/{id}
-
-#### GET
-##### Description
-
-Get a whitelisted address.
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| id | path | Unique whitelisted smart contract identifier in database. | Yes | integer |
-
-##### Responses
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Get a whitelisted address. | [WhitelistedSmartContract](#whitelistedsmartcontract) |
-
 ### Models
 
 #### Blockchain
@@ -1765,9 +2251,14 @@ Get list of currencies
 | ---- | ---- | ----------- | -------- |
 | name | string | Currency name<br>_Example:_ `"Bitcoin"` | No |
 | description | string | Currency description<br>_Example:_ `"btc"` | No |
+<<<<<<< HEAD
 | homepage | string | Currency homepage<br>_Example:_ `{}` | No |
 | parent_id | string | Parent currency id. | No |
 | price | double | Currency price. | No |
+=======
+| homepage | string | Currency homepage<br>_Example:_ `"btc"` | No |
+| price | string | Currency current price | No |
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 | explorer_transaction | string | Currency transaction exprorer url template<br>_Example:_ `"https://testnet.blockchain.info/tx/"` | No |
 | explorer_address | string | Currency address exprorer url template<br>_Example:_ `"https://testnet.blockchain.info/address/"` | No |
 | type | string | Currency type<br>_Example:_ `"coin"` | No |
@@ -1786,6 +2277,7 @@ Get list of currencies
 | min_confirmations | string | Number of confirmations required for confirming deposit or withdrawal | No |
 | code | string | Unique currency code. | No |
 | blockchain_key | string | Associated blockchain key which will perform transactions synchronization for currency. | No |
+| parent_id | string | Parent currency id. | No |
 | min_collection_amount | double | Minimal collection amount. | No |
 | visible | string | Currency display status (true/false). | No |
 | subunits | integer | Fraction of the basic monetary unit. | No |
@@ -1946,7 +2438,10 @@ Get all members, result is paginated.
 | created_at | string | Member created time in iso8601 format. | No |
 | updated_at | string | Member updated time in iso8601 format. | No |
 | beneficiaries | [ [Beneficiary](#beneficiary) ] | Member Beneficiary. | No |
+<<<<<<< HEAD
 | deposit_addresses | [ [PaymentAddress](#paymentaddress) ] | Member deposits addresses | No |
+=======
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 
 #### Account
 
@@ -2005,6 +2500,7 @@ Returns withdraw limits table as paginated collection
 | limit_1_month | double | 1 month withdraw limit. | No |
 | created_at | string | Withdraw limit table created time in iso8601 format. | No |
 | updated_at | string | Withdraw limit table updated time in iso8601 format. | No |
+<<<<<<< HEAD
 
 #### InternalTransfer
 
@@ -2037,3 +2533,5 @@ Get a whitelisted address.
 | state | string | Whitelisted smart contract status (active/disabled). | No |
 | created_at | string | Whitelisted smart contract created time in iso8601 format. | No |
 | updated_at | string | Whitelisted smart contract updated time in iso8601 format. | No |
+=======
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)

@@ -1,11 +1,19 @@
 # Peatio Management API v2
 Management API is server-to-server API with high privileges.
 
+<<<<<<< HEAD
 ## Version: 3.1.0
 
 **Contact information:**  
 openware.com  
 <https://www.openware.com>  
+=======
+## Version: 2.7.0
+
+**Contact information:**  
+openware.com  
+<https://www.openware.com>
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 hello@openware.com  
 
 **License:** <https://github.com/openware/peatio/blob/master/LICENSE.md>
@@ -55,6 +63,7 @@ Get list of user beneficiaries
 | ---- | ----------- | ------ |
 | 201 | Get list of user beneficiaries | [Beneficiary](#beneficiary) |
 
+<<<<<<< HEAD
 ### /api/v2/management/peatio/engines/update
 
 #### POST
@@ -130,6 +139,8 @@ Get all engine, result is paginated.
 | ---- | ----------- | ------ |
 | 201 | Get all engine, result is paginated. | [Engine](#engine) |
 
+=======
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 ### /api/v2/management/peatio/accounts/balances
 
 #### POST
@@ -566,8 +577,12 @@ Cancel all open orders
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | uid | formData | Filter order by owner uid | No | string |
+<<<<<<< HEAD
 | market | formData | Id has been renamed to symbol. This field will be deprecated soon. | Yes | string |
 | market_type | formData | Market type. | No | string |
+=======
+| market | formData | Unique market id. It's always in the form of xxxyyy,where xxx is the base currency code, yyy is the quotecurrency code, e.g. 'btcusd'. All available markets canbe found at /api/v2/markets. | Yes | string |
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 
 ##### Responses
 
@@ -576,6 +591,7 @@ Cancel all open orders
 | 201 | Cancel all open orders | [Order](#order) |
 
 ### /api/v2/management/peatio/orders/{id}/cancel
+<<<<<<< HEAD
 
 #### POST
 ##### Description
@@ -621,6 +637,52 @@ Returns orders
 
 #### POST
 ##### Description
+=======
+
+#### POST
+##### Description
+
+Cancel specific order
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | path | Unique order id. | Yes | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 | Cancel specific order | [Order](#order) |
+
+### /api/v2/management/peatio/orders
+
+#### POST
+##### Description
+
+Returns orders
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| uid | formData | Filter order by owner uid | No | string |
+| market | formData | Unique market id. It's always in the form of xxxyyy,where xxx is the base currency code, yyy is the quotecurrency code, e.g. 'btcusd'. All available markets canbe found at /api/v2/markets. | No | string |
+| state | formData | Filter order by state. | No | string |
+| ord_type | formData | Filter order by ord_type. | No | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 201 | Returns orders | [Order](#order) |
+
+### /api/v2/management/peatio/transfers/new
+
+#### POST
+##### Description
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 
 Creates new transfer.
 
@@ -688,6 +750,7 @@ Set user group.
 | 201 | Set user group. |
 
 ### /api/v2/management/peatio/members
+<<<<<<< HEAD
 
 #### POST
 ##### Description
@@ -715,6 +778,35 @@ Create a member.
 
 #### POST
 ##### Description
+=======
+
+#### POST
+##### Description
+
+Create a member.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| email | formData | User email. | Yes | string |
+| uid | formData | The shared user ID. | Yes | string |
+| level | formData | User level. | Yes | integer |
+| role | formData | User role. | Yes | string |
+| state | formData | User state. | Yes | string |
+| group | formData | User group | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 201 | Create a member. |
+
+### /api/v2/management/peatio/fee_schedule/trading_fees
+
+#### POST
+##### Description
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 
 Returns trading_fees table as paginated collection
 
@@ -787,6 +879,7 @@ Returns currency by code.
 | ---- | ----------- | ------ |
 | 201 | Returns currency by code. | [Currency](#currency) |
 
+<<<<<<< HEAD
 ### /api/v2/management/peatio/currencies/create
 
 #### POST
@@ -829,6 +922,8 @@ Create currency.
 | ---- | ----------- | ------ |
 | 201 | Create currency. | [Currency](#currency) |
 
+=======
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 ### /api/v2/management/peatio/currencies/list
 
 #### POST
@@ -848,6 +943,7 @@ Return currencies list.
 | ---- | ----------- | ------ |
 | 201 | Return currencies list. | [Currency](#currency) |
 
+<<<<<<< HEAD
 ### /api/v2/management/peatio/markets/{symbol}
 
 #### POST
@@ -868,14 +964,19 @@ Returns market by symbol.
 | ---- | ----------- | ------ |
 | 201 | Returns market by symbol. | [Market](#market) |
 
+=======
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 ### /api/v2/management/peatio/markets/list
 
 #### POST
 ##### Description
+<<<<<<< HEAD
 
 Return list of the markets.
 
 ##### Parameters
+=======
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -982,6 +1083,7 @@ Get list of user beneficiaries
 | data | json | Bank Account details for fiat Beneficiary in JSON format.For crypto it's blockchain address. | No |
 | state | string | Defines either beneficiary active - user can use it to withdraw moneyor pending - requires beneficiary activation with pin. | No |
 | sent_at | string | Time when last pin was sent | No |
+<<<<<<< HEAD
 
 #### Engine
 
@@ -995,6 +1097,8 @@ Get all engine, result is paginated.
 | uid | string | Owner of a engine | No |
 | url | string | Engine url | No |
 | state | string | Engine state | No |
+=======
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 
 #### Balance
 
@@ -1073,7 +1177,10 @@ Returns orders
 | avg_price | double | Average execution price, average of price in trades. | No |
 | state | string | One of 'wait', 'done', or 'cancel'.An order in 'wait' is an active order, waiting fulfillment;a 'done' order is an order fulfilled;'cancel' means the order has been canceled. | No |
 | market | string | The market in which the order is placed, e.g. 'btcusd'.All available markets can be found at /api/v2/markets. | No |
+<<<<<<< HEAD
 | market_type | string | Market type. | No |
+=======
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 | created_at | string | Order create time in iso8601 format. | No |
 | updated_at | string | Order updated time in iso8601 format. | No |
 | origin_volume | double | The amount user want to sell/buy.An order could be partially executed,e.g. an order sell 5 btc can be matched with a buy 3 btc order,left 2 btc to be sold; in this case the order's volume would be '5.0',its remaining_volume would be '2.0', its executed volume is '3.0'. | No |
@@ -1113,8 +1220,12 @@ Return currencies list.
 | id | string | Currency code.<br>_Example:_ `"btc"` | No |
 | name | string | Currency name<br>_Example:_ `"Bitcoin"` | No |
 | description | string | Currency description<br>_Example:_ `"btc"` | No |
+<<<<<<< HEAD
 | homepage | string | Currency homepage<br>_Example:_ `{}` | No |
 | parent_id | string | Currency parent id<br>_Example:_ `{}` | No |
+=======
+| homepage | string | Currency homepage<br>_Example:_ `"btc"` | No |
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 | price | string | Currency current price | No |
 | explorer_transaction | string | Currency transaction exprorer url template<br>_Example:_ `"https://testnet.blockchain.info/tx/"` | No |
 | explorer_address | string | Currency address exprorer url template<br>_Example:_ `"https://testnet.blockchain.info/address/"` | No |
@@ -1161,6 +1272,7 @@ Create market.
 | engine_id | integer | Engine ID . | No |
 | created_at | string | Market created time in iso8601 format. | No |
 | updated_at | string | Market updated time in iso8601 format. | No |
+<<<<<<< HEAD
 
 #### PaymentAddress
 
@@ -1173,3 +1285,5 @@ Create payment address
 | state | string | Payment address state. | No |
 | uid | string | The shared user ID. | No |
 | remote | string | Payment address remote creation (true/false). | No |
+=======
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)

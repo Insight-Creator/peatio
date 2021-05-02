@@ -1,11 +1,19 @@
 # Peatio User API v2
 API for Peatio application.
 
+<<<<<<< HEAD
 ## Version: 3.1.0
 
 **Contact information:**  
 openware.com  
 <https://www.openware.com>  
+=======
+## Version: 2.7.0
+
+**Contact information:**  
+openware.com  
+<https://www.openware.com>
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 hello@openware.com  
 
 **License:** <https://github.com/openware/peatio/blob/master/LICENSE.md>
@@ -42,12 +50,20 @@ Returns withdraw limits table as paginated collection
 | ---- | ----------- | ------ |
 | 200 | Returns withdraw limits table as paginated collection | [ [WithdrawLimit](#withdrawlimit) ] |
 
+<<<<<<< HEAD
 ### /api/v2/peatio/public/webhooks/{adapter}/{event}
+=======
+### /api/v2/peatio/public/webhooks/{event}
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 
 #### POST
 ##### Description
 
+<<<<<<< HEAD
 Webhook controller
+=======
+Bitgo Webhook
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 
 ##### Parameters
 
@@ -55,12 +71,26 @@ Webhook controller
 | ---- | ---------- | ----------- | -------- | ---- |
 | adapter | path | Name of adapter for process webhook | Yes | string |
 | event | path | Name of event can be deposit or withdraw | Yes | string |
+<<<<<<< HEAD
+=======
+| type | formData | Type of event. | Yes | string |
+| hash | formData | Address txid. | Yes | string |
+| transfer | formData | Transfer id. | Yes | string |
+| coin | formData | Currency code. | Yes | string |
+| wallet | formData | Wallet id. | Yes | string |
+| address | formData | User Address. | Yes | string |
+| walletId | formData | Wallet id. | Yes | string |
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 
 ##### Responses
 
 | Code | Description |
 | ---- | ----------- |
+<<<<<<< HEAD
 | 201 | Webhook controller |
+=======
+| 201 | Bitgo Webhook |
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 
 ### /api/v2/peatio/public/trading_fees
 
@@ -343,6 +373,7 @@ Get a currency
 | ---- | ----------- | ------ |
 | 200 | Get a currency | [Currency](#currency) |
 
+<<<<<<< HEAD
 ### /api/v2/peatio/account/internal_transfers
 
 #### POST
@@ -384,6 +415,8 @@ List your internal transfers as paginated collection.
 | ---- | ----------- | ------ |
 | 200 | List your internal transfers as paginated collection. | [ [InternalTransfer](#internaltransfer) ] |
 
+=======
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 ### /api/v2/peatio/account/stats/pnl
 
 #### GET
@@ -1132,8 +1165,12 @@ Get a currency
 | id | string | Currency code.<br>_Example:_ `"btc"` | No |
 | name | string | Currency name<br>_Example:_ `"Bitcoin"` | No |
 | description | string | Currency description<br>_Example:_ `"btc"` | No |
+<<<<<<< HEAD
 | homepage | string | Currency homepage<br>_Example:_ `{}` | No |
 | parent_id | string | Currency parent id<br>_Example:_ `{}` | No |
+=======
+| homepage | string | Currency homepage<br>_Example:_ `"btc"` | No |
+>>>>>>> 7e4e3e72 (Bump master with 2.7.0. Update API docs)
 | price | string | Currency current price | No |
 | explorer_transaction | string | Currency transaction exprorer url template<br>_Example:_ `"https://testnet.blockchain.info/tx/"` | No |
 | explorer_address | string | Currency address exprorer url template<br>_Example:_ `"https://testnet.blockchain.info/address/"` | No |
