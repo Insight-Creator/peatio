@@ -42,7 +42,11 @@ module API
           }
         ) do |account, options|
           wallet = Wallet.deposit_wallet(account.currency_id)
+<<<<<<< HEAD
           ::PaymentAddress.find_by(wallet: wallet, member: options[:current_user], remote: false)
+=======
+          ::PaymentAddress.find_by(wallet: wallet, member: options[:current_user])
+>>>>>>> 2d219ab1 (Enhancement: Return deposit address in account entity)
         end
       end
     end
